@@ -1,6 +1,6 @@
 
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
     #contenedorItems{
         position: relative;
     }
@@ -10,4 +10,19 @@
         left: 0;
     }
     
+}
+
+#containerEstrellas{
+    display: flex;
+    justify-content: space-around;
+}
+
+#containerEstrellas > button{
+    background-color: transparent;
+    border: none;
+    font-size: 2.5vw;
+}
+
+.starActive{
+    color: gold;
 }

@@ -12,9 +12,9 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+    <nav class="navbar navbar-expand-xl bg-body-tertiary ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Offcanvas navbar</a>
+            <a class="navbar-brand" href="#">Biblioteca</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,42 +22,110 @@
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Biblioteca</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <!-- ITEMS O BOTONES DE ADENTRO -->
                     <ul id="contenedorItems" class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
-                        
+
                         <li id="formAgregar" class="nav-item px-0 ms-3">
-                            <div class="dropdown px-lg-5">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
-                                    data-bs-auto-close="outside">
+                            <div class="dropdown px-xl-5">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false" data-bs-auto-close="outside">
                                     Dropdown form
                                 </button>
                                 <form class="dropdown-menu p-4">
+                                    <!-- NOMBRE -->
+
                                     <div class="mb-3">
-                                        <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
-                                        <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
+                                        <label for="nombreRecurso" class="form-label">Nombre del
+                                            recurso</label>
+                                        <input type="text" class="form-control" id="nombreRecurso"
+                                            placeholder="Transformers 2">
                                     </div>
+
+                                    <!-- GENERO -->
+
                                     <div class="mb-3">
-                                        <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
+                                        <label for="generoRecurso" class="form-label">Género</label>
+                                        <input type="text" class="form-control" id="generoRecurso"
+                                            placeholder="Acción">
                                     </div>
+
+                                    <!-- PLATAFORMA -->
+                                    <p class="mb-2">Plataforma</p>
+                                    <div class="dropdown">
+                                        <button id="formPlataforma" class="btn btn-secondary dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Plataformas
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a value="formPlataforma" class="dropdown-item" href="#">Netflix</a></li>
+                                            <li><a value="formPlataforma" class="dropdown-item" href="#">Amazon</a></li>
+                                            <li><a value="formPlataforma" class="dropdown-item" href="#">Fisico</a></li>
+                                            <li><a value="formPlataforma" class="dropdown-item" href="#">Kindle</a></li>
+                                            <li><a value="formPlataforma" class="dropdown-item" href="#">HBO</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- ESTADO -->
+                                    <p class="mb-2 mt-3">Estado</p>
+                                    <div class="dropdown">
+                                        <button id="formEstado" class="btn btn-secondary dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Estados
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a color="success" value="formEstado" class="dropdown-item" href="#">Terminado</a></li>
+                                            <li><a color="warning" value="formEstado" class="dropdown-item" href="#">Progreso</a></li>
+                                            <li><a color="danger" value="formEstado" class="dropdown-item" href="#">Pendiente</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- Formato -->
+                                    <p class="mb-2 mt-3">Formato </p>
+                                    <div class="dropdown">
+                                        <button id="formFormato" class="btn btn-secondary dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Formatos
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a value="formFormato" class="dropdown-item" href="#">Serie</a></li>
+                                            <li><a value="formFormato" class="dropdown-item" href="#">Película</a></li>
+                                            <li><a value="formFormato" class="dropdown-item" href="#">Libro</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- FECHA -->
+
+                                    <div class="mb-2 mt-3">
+                                        <label for="endDateRecurso" class="form-label">Fecha de terminación</label>
+                                        <input type="date" class="form-control" id="endDateRecurso"
+                                            placeholder="22/07/2024">
+                                    </div>
+                                    <!-- PUNTUACION -->
+                                    <p id="formPuntuacion" value="" class="mb-0 mt-3">Puntuación</p>
+                                    <div id="containerEstrellas">
+                                        <button class="stars" value="1">★</button>
+                                        <button class="stars" value="2">★</button>
+                                        <button class="stars" value="3">★</button>
+                                        <button class="stars" value="4">★</button>
+                                        <button class="stars" value="5">★</button>
+                                    </div>
+                                    <!-- RESEÑA -->
                                     <div class="mb-3">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                                            <label class="form-check-label" for="dropdownCheck2">
-                                                Remember me
-                                            </label>
-                                        </div>
+                                        <label for="reseñaRecurso" class="form-label">Reseña</label>
+                                        <input type="text" class="form-control" id="reseñaRecurso"
+                                            placeholder="Gran pelicula, 10/10 recomendada 100%">
                                     </div>
-                                    <button id="botonSubirInfo" type="submit" class="btn btn-primary">Send</button>
+                                    
+                                    <button id="botonSubirInfo" type="submit" class="btn btn-primary mt-4">Send</button>
                                 </form>
-                            </div>  
+                            </div>
+
+                        <!-- ************************ OTROS ITEMS ************************************** -->
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link active px-3" aria-current="page" href="#">Home</a>
                         </li>
@@ -65,7 +133,7 @@
                         <li class="nav-item">
                             <a class="nav-link px-3" href="#">Link</a>
                         </li>
-
+                        <!-- DROPDOWN -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -82,7 +150,7 @@
                         </li>
 
                     </ul>
-                    <form class="d-flex mt-lg-0 mt-3" role="search">
+                    <form class="d-flex mt-xl-0 mt-3" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
