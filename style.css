@@ -1,0 +1,13 @@
+
+
+@media (min-width: 992px) {
+    #contenedorItems{
+        position: relative;
+    }
+    
+    #formAgregar{
+        position: absolute;
+        left: 0;
+    }
+    
+}
