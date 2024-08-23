@@ -36,7 +36,7 @@
                                     aria-expanded="false" data-bs-auto-close="outside">
                                     Dropdown form
                                 </button>
-                                <form class="dropdown-menu p-4">
+                                <form id="menu-dropdown-datos" class="dropdown-menu p-4" style="max-height: 70vh; overflow-y: scroll;">
                                     <!-- NOMBRE -->
 
                                     <div class="mb-3">
@@ -48,17 +48,84 @@
 
                                     <!-- GENERO -->
 
-                                    <div class="mb-3">
-                                        <label for="generoRecurso" class="form-label">Género</label>
-                                        <input type="text" class="form-control" id="generoRecurso"
-                                            placeholder="Acción">
+                                    <p class="mb-3">Género</p>
+                                    <div class="dropdown">
+                                        <button id="formGenero" class="btn btn-secondary dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Géneros</button>
+                                        <ul id="menuGeneros" class="dropdown-menu px-3">
+
+                                            <li>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="Acción"
+                                                        id="formAccion">
+                                                    <label value="formGenero" class="form-check-label" for="formAccion">
+                                                        Acción
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="Ciencia Ficción"
+                                                        id="formSF">
+                                                    <label value="formGenero" class="form-check-label" for="formSF">
+                                                        Ciencia Ficción
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="Romance"
+                                                        id="formRomance">
+                                                    <label value="formGenero" class="form-check-label" for="formRomance">
+                                                        Romance
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="Misterio"
+                                                        id="formMisterio">
+                                                    <label value="formGenero" class="form-check-label" for="formMisterio">
+                                                        Misterio
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="Fantasía"
+                                                        id="formFantasia">
+                                                    <label value="formGenero" class="form-check-label" for="formFantasia">
+                                                        Fantasía
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="Drama"
+                                                        id="formDrama">
+                                                    <label value="formGenero" class="form-check-label" for="formDrama">
+                                                        Drama
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="Comedia"
+                                                        id="formComedia">
+                                                    <label value="formGenero" class="form-check-label" for="formComedia">
+                                                        Comedia                                                    </label>
+                                                </div>
+                                            </li>
+
+                                        </ul>
                                     </div>
 
                                     <!-- PLATAFORMA -->
                                     <p class="mb-2">Plataforma</p>
                                     <div class="dropdown">
-                                        <button id="formPlataforma" class="btn btn-secondary dropdown-toggle" type="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button id="formPlataforma" class="btn btn-secondary dropdown-toggle"
+                                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Plataformas
                                         </button>
                                         <ul class="dropdown-menu">
@@ -78,9 +145,12 @@
                                             Estados
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a color="success" value="formEstado" class="dropdown-item" href="#">Terminado</a></li>
-                                            <li><a color="warning" value="formEstado" class="dropdown-item" href="#">Progreso</a></li>
-                                            <li><a color="danger" value="formEstado" class="dropdown-item" href="#">Pendiente</a></li>
+                                            <li><a color="success" value="formEstado" class="dropdown-item"
+                                                    href="#">Terminado</a></li>
+                                            <li><a color="warning" value="formEstado" class="dropdown-item"
+                                                    href="#">Progreso</a></li>
+                                            <li><a color="danger" value="formEstado" class="dropdown-item"
+                                                    href="#">Pendiente</a></li>
                                         </ul>
                                     </div>
                                     <!-- Formato -->
@@ -118,12 +188,12 @@
                                         <input type="text" class="form-control" id="reseñaRecurso"
                                             placeholder="Gran pelicula, 10/10 recomendada 100%">
                                     </div>
-                                    
+
                                     <button id="botonSubirInfo" type="submit" class="btn btn-primary mt-4">Send</button>
                                 </form>
                             </div>
 
-                        <!-- ************************ OTROS ITEMS ************************************** -->
+                            <!-- ************************ OTROS ITEMS ************************************** -->
                         </li>
 
                         <li class="nav-item">
