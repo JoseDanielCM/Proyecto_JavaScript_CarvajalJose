@@ -5,7 +5,7 @@
 
     #formAgregar {
         position: absolute;
-        left: 0;
+        left: 1.5vw;
     }
 
     #menu-dropdown-datos{
@@ -14,15 +14,16 @@
     }
 }
 
-#containerEstrellas {
+#estrellasContainer {
     display: flex;
     justify-content: space-around;
 }
 
-#containerEstrellas>button {
+#estrellasContainer > div {
     background-color: transparent;
     border: none;
     font-size: 2.5vw;
+    cursor: pointer;
 }
 
 .starActive {
@@ -31,8 +32,24 @@
 
 #formGenero {
     white-space: normal;
-    /* Permite que el texto se divida en líneas */
     max-width: 30vw;
-    /* Ancho máximo antes de que el texto se ajuste a nuevas líneas */
-    /* Asegura que las palabras largas también se dividan */
+}
+
+.toast-header{
+    background-color: rgb(208, 125, 219);
+    color: black;
+    font-size: 2vw;
+}
+
+.toast-body{
+    font-weight: bold;
+    font-size: 1.5vw;
+}
+
+#liveToast{
+    width: 30vw;
+}
+
+#contenedorRecursos{
+    margin: 1vw 3vw 1vw;
 }

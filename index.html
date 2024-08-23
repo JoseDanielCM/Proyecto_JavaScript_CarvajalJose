@@ -29,27 +29,28 @@
                     <!-- ITEMS O BOTONES DE ADENTRO -->
                     <ul id="contenedorItems" class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
-
                         <li id="formAgregar" class="nav-item px-0 ms-3">
                             <div class="dropdown px-xl-5">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
                                     aria-expanded="false" data-bs-auto-close="outside">
                                     Dropdown form
                                 </button>
-                                <form id="menu-dropdown-datos" class="dropdown-menu p-4" style="max-height: 70vh; overflow-y: scroll;">
+                                <!-- formulario para cerrar -->
+                                <form id="menu-dropdown-datos" class="dropdown-menu p-4"
+                                    style="max-height: 70vh; overflow-y: scroll;">
                                     <!-- NOMBRE -->
 
-                                    <div class="mb-3">
+                                    <div id="sourceName" class="mb-3">
                                         <label for="nombreRecurso" class="form-label">Nombre del
                                             recurso</label>
                                         <input type="text" class="form-control" id="nombreRecurso"
-                                            placeholder="Transformers 2">
+                                            placeholder="Transformers 2" required>
                                     </div>
 
                                     <!-- GENERO -->
 
-                                    <p class="mb-3">Género</p>
-                                    <div class="dropdown">
+                                    <p class="mb-2">Género</p>
+                                    <div valid="false" id="generoContainer" class="dropdown">
                                         <button id="formGenero" class="btn btn-secondary dropdown-toggle" type="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                             Géneros</button>
@@ -57,8 +58,8 @@
 
                                             <li>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="Acción"
-                                                        id="formAccion">
+                                                    <input cont="generoContainer" class="form-check-input"
+                                                        type="checkbox" value="Acción" id="formAccion">
                                                     <label value="formGenero" class="form-check-label" for="formAccion">
                                                         Acción
                                                     </label>
@@ -66,8 +67,8 @@
                                             </li>
                                             <li>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="Ciencia Ficción"
-                                                        id="formSF">
+                                                    <input cont="generoContainer" class="form-check-input"
+                                                        type="checkbox" value="Ciencia Ficción" id="formSF">
                                                     <label value="formGenero" class="form-check-label" for="formSF">
                                                         Ciencia Ficción
                                                     </label>
@@ -75,35 +76,38 @@
                                             </li>
                                             <li>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="Romance"
-                                                        id="formRomance">
-                                                    <label value="formGenero" class="form-check-label" for="formRomance">
+                                                    <input cont="generoContainer" class="form-check-input"
+                                                        type="checkbox" value="Romance" id="formRomance">
+                                                    <label value="formGenero" class="form-check-label"
+                                                        for="formRomance">
                                                         Romance
                                                     </label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="Misterio"
-                                                        id="formMisterio">
-                                                    <label value="formGenero" class="form-check-label" for="formMisterio">
+                                                    <input cont="generoContainer" class="form-check-input"
+                                                        type="checkbox" value="Misterio" id="formMisterio">
+                                                    <label value="formGenero" class="form-check-label"
+                                                        for="formMisterio">
                                                         Misterio
                                                     </label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="Fantasía"
-                                                        id="formFantasia">
-                                                    <label value="formGenero" class="form-check-label" for="formFantasia">
+                                                    <input cont="generoContainer" class="form-check-input"
+                                                        type="checkbox" value="Fantasía" id="formFantasia">
+                                                    <label value="formGenero" class="form-check-label"
+                                                        for="formFantasia">
                                                         Fantasía
                                                     </label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="Drama"
-                                                        id="formDrama">
+                                                    <input cont="generoContainer" class="form-check-input"
+                                                        type="checkbox" value="Drama" id="formDrama">
                                                     <label value="formGenero" class="form-check-label" for="formDrama">
                                                         Drama
                                                     </label>
@@ -111,10 +115,11 @@
                                             </li>
                                             <li>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="Comedia"
-                                                        id="formComedia">
-                                                    <label value="formGenero" class="form-check-label" for="formComedia">
-                                                        Comedia                                                    </label>
+                                                    <input cont="generoContainer" class="form-check-input"
+                                                        type="checkbox" value="Comedia" id="formComedia">
+                                                    <label value="formGenero" class="form-check-label"
+                                                        for="formComedia">
+                                                        Comedia </label>
                                                 </div>
                                             </li>
 
@@ -122,48 +127,56 @@
                                     </div>
 
                                     <!-- PLATAFORMA -->
-                                    <p class="mb-2">Plataforma</p>
-                                    <div class="dropdown">
+                                    <p class="mb-2 mt-3">Plataforma</p>
+                                    <div valid="false" id="plataformaContainer" class="dropdown">
                                         <button id="formPlataforma" class="btn btn-secondary dropdown-toggle"
                                             type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Plataformas
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a value="formPlataforma" class="dropdown-item" href="#">Netflix</a></li>
-                                            <li><a value="formPlataforma" class="dropdown-item" href="#">Amazon</a></li>
-                                            <li><a value="formPlataforma" class="dropdown-item" href="#">Fisico</a></li>
-                                            <li><a value="formPlataforma" class="dropdown-item" href="#">Kindle</a></li>
-                                            <li><a value="formPlataforma" class="dropdown-item" href="#">HBO</a></li>
+                                            <li><a cont="plataformaContainer" value="formPlataforma"
+                                                    class="dropdown-item" href="#">Netflix</a></li>
+                                            <li><a cont="plataformaContainer" value="formPlataforma"
+                                                    class="dropdown-item" href="#">Amazon</a></li>
+                                            <li><a cont="plataformaContainer" value="formPlataforma"
+                                                    class="dropdown-item" href="#">Fisico</a></li>
+                                            <li><a cont="plataformaContainer" value="formPlataforma"
+                                                    class="dropdown-item" href="#">Kindle</a></li>
+                                            <li><a cont="plataformaContainer" value="formPlataforma"
+                                                    class="dropdown-item" href="#">HBO</a></li>
                                         </ul>
                                     </div>
 
                                     <!-- ESTADO -->
                                     <p class="mb-2 mt-3">Estado</p>
-                                    <div class="dropdown">
+                                    <div valid="false" id="estadoContainer" class="dropdown">
                                         <button id="formEstado" class="btn btn-secondary dropdown-toggle" type="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                             Estados
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a color="success" value="formEstado" class="dropdown-item"
-                                                    href="#">Terminado</a></li>
-                                            <li><a color="warning" value="formEstado" class="dropdown-item"
-                                                    href="#">Progreso</a></li>
-                                            <li><a color="danger" value="formEstado" class="dropdown-item"
-                                                    href="#">Pendiente</a></li>
+                                            <li><a cont="estadoContainer" color="success" value="formEstado"
+                                                    class="dropdown-item" href="#">Terminado</a></li>
+                                            <li><a cont="estadoContainer" color="warning" value="formEstado"
+                                                    class="dropdown-item" href="#">Progreso</a></li>
+                                            <li><a cont="estadoContainer" color="danger" value="formEstado"
+                                                    class="dropdown-item" href="#">Pendiente</a></li>
                                         </ul>
                                     </div>
                                     <!-- Formato -->
                                     <p class="mb-2 mt-3">Formato </p>
-                                    <div class="dropdown">
+                                    <div valid="false" id="formatoContainer" class="dropdown">
                                         <button id="formFormato" class="btn btn-secondary dropdown-toggle" type="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                             Formatos
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a value="formFormato" class="dropdown-item" href="#">Serie</a></li>
-                                            <li><a value="formFormato" class="dropdown-item" href="#">Película</a></li>
-                                            <li><a value="formFormato" class="dropdown-item" href="#">Libro</a></li>
+                                            <li><a cont="formatoContainer" value="formFormato" class="dropdown-item"
+                                                    href="#">Serie</a></li>
+                                            <li><a cont="formatoContainer" value="formFormato" class="dropdown-item"
+                                                    href="#">Película</a></li>
+                                            <li><a cont="formatoContainer" value="formFormato" class="dropdown-item"
+                                                    href="#">Libro</a></li>
                                         </ul>
                                     </div>
                                     <!-- FECHA -->
@@ -171,25 +184,24 @@
                                     <div class="mb-2 mt-3">
                                         <label for="endDateRecurso" class="form-label">Fecha de terminación</label>
                                         <input type="date" class="form-control" id="endDateRecurso"
-                                            placeholder="22/07/2024">
+                                            placeholder="22/07/2024" required>
                                     </div>
                                     <!-- PUNTUACION -->
                                     <p id="formPuntuacion" value="" class="mb-0 mt-3">Puntuación</p>
-                                    <div id="containerEstrellas">
-                                        <button class="stars" value="1">★</button>
-                                        <button class="stars" value="2">★</button>
-                                        <button class="stars" value="3">★</button>
-                                        <button class="stars" value="4">★</button>
-                                        <button class="stars" value="5">★</button>
+                                    <div valid="false" id="estrellasContainer">
+                                        <div class="stars" value="1">★</div>
+                                        <div class="stars" value="2">★</div>
+                                        <div class="stars" value="3">★</div>
+                                        <div class="stars" value="4">★</div>
+                                        <div class="stars" value="5">★</div>
                                     </div>
                                     <!-- RESEÑA -->
                                     <div class="mb-3">
                                         <label for="reseñaRecurso" class="form-label">Reseña</label>
                                         <input type="text" class="form-control" id="reseñaRecurso"
-                                            placeholder="Gran pelicula, 10/10 recomendada 100%">
+                                            placeholder="Gran pelicula, 10/10 recomendada 100%" required>
                                     </div>
-
-                                    <button id="botonSubirInfo" type="submit" class="btn btn-primary mt-4">Send</button>
+                                    <button type="button" id="botonSubirInfo" class="btn btn-primary mt-4">Send</button>
                                 </form>
                             </div>
 
@@ -229,6 +241,26 @@
         </div>
     </nav>
 
+    <div class="toast-container position-fixed top-0 end-0 p-3 d-flex ">
+        <div id="liveToast" class="toast text-bg-dark" role="alert" aria-live="assertive" aria-atomic="true"
+            data-bs-delay="2000">
+            <div class="toast-header">
+                <strong class="me-auto">¡ Advertencia !</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Agrega los datos faltantes en el formulario para poder subir el recurso
+            </div>
+        </div>
+    </div>
+
+    <div id="contenedorRecursos">
+        <div id="card-container" class="row row-cols-3 row-cols-md-6 g-4">
+
+            
+
+        </div>
+    </div>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
