@@ -25,6 +25,24 @@
     font-size: 2.5vw;
     cursor: pointer;
 }
+.estrellasCards {
+    display: flex;
+    justify-content: space-around;
+}
+
+.estrellasCards > div {
+    background-color: transparent;
+    border: none;
+    font-size: 2.5vw;
+    cursor: pointer;
+}
+
+.estrellasQuietas > div{
+    background-color: transparent;
+    border: none;
+    font-size: 2.5vw;
+    cursor: auto;
+}
 
 .starActive {
     color: gold;
@@ -53,3 +71,9 @@
 #contenedorRecursos{
     margin: 1vw 3vw 1vw;
 }
+
+.formularioActivate{
+    width: 100%;
+    height: 2em;
+}
+
