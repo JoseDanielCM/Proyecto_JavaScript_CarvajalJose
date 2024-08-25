@@ -23,7 +23,6 @@ for (const star of estrellas) {
 
 const moverEstrellas = function (idObjetivo) {
     let estrellas = document.querySelectorAll(`.stars${idObjetivo}`);
-    console.log(estrellas);
 
     for (const star of estrellas) {
         star.addEventListener("click", () => {
@@ -171,7 +170,8 @@ btnSubir.addEventListener("click", async (event) => {
             body: JSON.stringify(datos),
         });
         document.getElementById("card-container").innerHTML = ""
-        cargarPagina()
+        let sinFiltro = "ninguno"
+        cargarPagina(sinFiltro)
         // agregar datos a card
     } else {
         formulario.reportValidity()
@@ -182,7 +182,9 @@ btnSubir.addEventListener("click", async (event) => {
     }
 })
 
-const cargarPagina = async function () {
+const cargarPagina = async function (filtros) {
+    console.log(filtros)
+    
     const traer = await fetch('https://66c9dc4559f4350f064da9c1.mockapi.io/api/v1/resources/');
     const dataResources = await traer.json()
 
@@ -197,6 +199,41 @@ const cargarPagina = async function () {
         let valor = data.valor
         let texto = data.texto
 
+        // #region VALIDAR FILTROS
+        
+            if (filtros!="ninguno") {
+                let generoSrc = genero.split(", ")
+                
+                if (filtros.genero != "") {         
+                    let listaGenerosFiltro = filtros.genero.split(", ")
+                    
+                    for (const fltrGenero of listaGenerosFiltro) {
+                        if (!generoSrc.includes(fltrGenero)) {
+                            return
+                        }
+                    }
+                }
+                
+                if (filtros.plataforma!="" && filtros.plataforma != plataforma.trimEnd()) {
+                    return
+                }
+                if (filtros.estado!="" && filtros.estado != estado.trimEnd()) {
+                    return
+                }
+                if (filtros.formato!="" && filtros.formato != formato.trimEnd()) {
+                    return
+                }
+                if (filtros.valor!="" && filtros.valor != valor.trimEnd()) {
+                    return
+                }
+                let nombreComparacion = nombre.toLowerCase()
+                
+                if (filtros.nombre!="" && !nombreComparacion.includes(filtros.nombre)) {
+                    return
+                }
+            }
+                
+        // #endregion
         let dataSourceHtml = `
             <div class="card text-bg-secondary" style="max-width: 18rem;">
                 <div class="card-header">
@@ -497,7 +534,8 @@ const cargarPagina = async function () {
     });
 
 }
-cargarPagina()
+let sinfiltros = "ninguno"
+cargarPagina(sinfiltros)
 const dropdownsEdicion = function (idCambios) {
     let edicionItems = document.querySelectorAll(`.edicion-item${idCambios}`)
     console.log(edicionItems);
@@ -559,11 +597,8 @@ document.querySelectorAll(`.inputFiltrosGenero`).forEach((checkbox) => {
     });
 });
 
-filtroGeneros()
-
 const arreglarCheckBoxInterior = function () {
     document.querySelectorAll('.generosMenus').forEach(element => {
-        console.log(element);
 
         element.addEventListener('click', function (event) {
             event.stopPropagation();
@@ -573,13 +608,14 @@ const arreglarCheckBoxInterior = function () {
 
 document.getElementById("subirFiltros").addEventListener("click", () => {
     // #region TRAER DATOS DE LOS FILTROS
+    document.getElementById("card-container").innerHTML = ""
         const filtros = {
             genero: document.getElementById("btnFiltroGeneros").getAttribute("listgen"),
             plataforma: document.getElementById("filterPlataform").innerText,
             estado: document.getElementById("filterStatus").innerText,
             formato: document.getElementById("filterFormato").innerText,
             valor: document.getElementById("starFiltro").getAttribute("value"),
-            nombre: document.getElementById("filtroNombre").value
+            nombre: document.getElementById("filtroNombre").value.toLowerCase()
         }
         // #region VALIDAR COSITAS
             if (filtros.plataforma =="Plataformas ") {
@@ -596,9 +632,8 @@ document.getElementById("subirFiltros").addEventListener("click", () => {
             }
         // #endregion
         
-
         console.log(filtros);
-        
+        cargarPagina(filtros)
 
     // #endregion
 })
