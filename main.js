@@ -2,23 +2,23 @@
 
 let estrellas = document.querySelectorAll(".stars");
 
-    for (const star of estrellas) {
-        star.addEventListener("click", () => {
-            valorStar = Number(star.getAttribute("value"))
-            document.getElementById("formPuntuacion").setAttribute("value", valorStar)
-            for (const starR of estrellas) {
-                starR.classList.remove("starActive");
-            }
+for (const star of estrellas) {
+    star.addEventListener("click", () => {
+        valorStar = Number(star.getAttribute("value"))
+        document.getElementById("formPuntuacion").setAttribute("value", valorStar)
+        for (const starR of estrellas) {
+            starR.classList.remove("starActive");
+        }
 
-            for (const starON of estrellas) {
-                if (starON.getAttribute("value") <= valorStar) {
-                    starON.classList.add("starActive")
-                }
+        for (const starON of estrellas) {
+            if (starON.getAttribute("value") <= valorStar) {
+                starON.classList.add("starActive")
             }
+        }
 
-            document.getElementById("estrellasContainer").setAttribute("valid", true)
-        })
-    }
+        document.getElementById("estrellasContainer").setAttribute("valid", true)
+    })
+}
 
 
 // *********************** VALIDACION ITEMS DENTRO DEL DROPDOWN *******************************
@@ -49,10 +49,8 @@ items.forEach(element => {
 });
 
 // que el dropdown no se cierre al dar click en labels de adentro
-document.querySelectorAll('.dropdown-menu').forEach(function (dropdown) {
-    dropdown.addEventListener('click', function (event) {
-        event.stopPropagation();
-    });
+document.getElementById('menuGeneros').addEventListener('click', function (event) {
+    event.stopPropagation();
 });
 
 // ******************************************* VALIDAR LAS CHECKLISTS ***************************
@@ -179,8 +177,8 @@ const cargarPagina = async function () {
                     <p class="card-text">${genero}</p>
                     <p class="card-text">${plataforma}</p>
                     <p class="card-text">${estado}</p>
-                    <p class="card-text">${fecha}</p>
-                    <div id="star${identificadorResources}" value="" class="estrellasCards estrellasQuietas">
+                    <p class="card-text">${fecha}</p>   
+                    <div id="star${identificadorResources}" value="${valor}" class="estrellasCards estrellasQuietas">
                         <div cont="star${identificadorResources}" class="stars${identificadorResources}" value="1">★</div>
                         <div cont="star${identificadorResources}" class="stars${identificadorResources}" value="2">★</div>
                         <div cont="star${identificadorResources}" class="stars${identificadorResources}" value="3">★</div>
@@ -199,7 +197,7 @@ const cargarPagina = async function () {
         document.getElementById("card-container").appendChild(cardContainer)
 
         let estrellas = document.querySelectorAll(`.stars${identificadorResources}`)
-        
+
         estrellas.forEach(star => {
             if (Number(star.getAttribute("value")) <= Number(valor)) {
                 star.classList.add("starActive")
@@ -209,7 +207,6 @@ const cargarPagina = async function () {
 
         // #region ************************* BOTON EDITAR *********************************************
 
-        // Función para alternar entre modo edición y visualización
         let botonEditar = cardContainer.querySelector("button.btnEditar")
 
         botonEditar.addEventListener("click", async () => {
@@ -218,6 +215,9 @@ const cargarPagina = async function () {
             const resourcesData = await DBresource.json()
 
             const isEditing = botonEditar.textContent === 'Editar';
+
+            let listaGeneros = resourcesData.genero.split(", ")
+
             // quitar cardContainer.remove()
             if (isEditing) {
                 // MODO EDICIONNNNN ******************************************
@@ -225,27 +225,129 @@ const cargarPagina = async function () {
                 cardData.innerHTML = `
                     <textarea class="edicion-text formularioActivate">${resourcesData.nombre}</textarea>
 
-                    <div valid="false" id="formatoContainer" class="dropdown">
+                    <div class="dropdown">
                         <button id="edicion-formato" class="edicion-text btn btn-secondary dropdown-toggle" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Formatos
+                            ${resourcesData.formato}
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a cont="formatoContainer" value="edicion-formato" class="edicion-item dropdown-item"
+                            <li><a value="edicion-formato" class="edicion-item dropdown-item"
                                     href="#">Serie</a></li>
-                            <li><a cont="formatoContainer" value="edicion-formato" class="edicion-item dropdown-item"
+                            <li><a value="edicion-formato" class="edicion-item dropdown-item"
                                     href="#">Película</a></li>
-                            <li><a cont="formatoContainer" value="edicion-formato" class="edicion-item dropdown-item"
+                            <li><a value="edicion-formato" class="edicion-item dropdown-item"
                                     href="#">Libro</a></li>
                         </ul>
                     </div>
 
-                    <textarea class="edicion-text formularioActivate">${resourcesData.genero}</textarea>
-                    <textarea class="edicion-text formularioActivate">${resourcesData.plataforma}</textarea>
-                    <textarea class="edicion-text formularioActivate">${resourcesData.estado}</textarea>
-                    <textarea class="edicion-text formularioActivate">${resourcesData.fecha}</textarea>
+                    <div valid="false" id="generoContainer" class="dropdown">
+                        <button id="edicionGenero${idCambios}" class="btn btn-secondary dropdown-toggle edicion-text edicionGeneros" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            ${resourcesData.genero}</button>
+                        <ul class="generosMenus dropdown-menu px-3">
 
-                    <div id="star${idCambios}" value="" class="edicion-text estrellasCards">
+                            <li>
+                                <div class="form-check">
+                                    <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
+                                        type="checkbox" value="Acción" id="editAccion">
+                                    <label class="form-check-label" for="editAccion">
+                                        Acción
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
+                                        type="checkbox" value="Ciencia Ficción" id="editSciFi">
+                                    <label class="form-check-label" for="editSciFi">
+                                        Ciencia Ficción
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
+                                        type="checkbox" value="Romance" id="editRomance">
+                                    <label class="form-check-label" for="editRomance">
+                                        Romance
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
+                                        type="checkbox" value="Misterio" id="editMisterio">
+                                    <label class="form-check-label"
+                                        for="editMisterio">
+                                        Misterio
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
+                                        type="checkbox" value="Fantasía" id="editFantasia">
+                                    <label class="form-check-label"
+                                        for="editFantasia">
+                                        Fantasía
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
+                                        type="checkbox" value="Drama" id="editDrama">
+                                    <label class="form-check-label" for="editDrama">
+                                        Drama
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
+                                        type="checkbox" value="Comedia" id="editComedia">
+                                    <label class="form-check-label"
+                                        for="editComedia">
+                                        Comedia </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button id="edicion-plataforma" class="edicion-text btn btn-secondary dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                            ${resourcesData.plataforma}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a value="edicion-plataforma" class="edicion-item dropdown-item" href="#">Netflix</a></li>
+                            <li><a value="edicion-plataforma" class="edicion-item dropdown-item" href="#">Amazon</a></li>
+                            <li><a value="edicion-plataforma" class="edicion-item dropdown-item" href="#">Fisico</a></li>
+                            <li><a value="edicion-plataforma" class="edicion-item dropdown-item" href="#">Kindle</a></li>
+                            <li><a value="edicion-plataforma" class="edicion-item dropdown-item" href="#">HBO</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <button id="edicion-estado" class="edicion-text btn btn-secondary dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                            ${resourcesData.estado}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a color="success" value="edicion-estado" class="edicion-item dropdown-item" 
+                            href="#">Terminado</a></li>
+                            <li><a color="warning" value="edicion-estado" class="edicion-item dropdown-item" 
+                            href="#">Progreso</a></li>
+                            <li><a color="danger" value="edicion-estado" class="edicion-item dropdown-item" 
+                            href="#">Pendiente</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-2">
+                        <input type="date" class="form-control edicion-text" id="editDate"
+                            value="${resourcesData.fecha}" required>
+                    </div>
+
+                    <div id="star${idCambios}" value="${resourcesData.valor}" class="edicion-text estrellasCards">
                         <div cont="star${idCambios}" class="stars${idCambios}" value="1">★</div>
                         <div cont="star${idCambios}" class="stars${idCambios}" value="2">★</div>
                         <div cont="star${idCambios}" class="stars${idCambios}" value="3">★</div>
@@ -255,8 +357,32 @@ const cargarPagina = async function () {
 
                     <textarea class="edicion-text formularioActivate">${resourcesData.texto}</textarea>
                 `
+                
+                arreglarCheckBoxInterior()
+                // colocar chek a los que ya traia antes
+                let listaInputs = document.querySelectorAll(`.genEditInput${idCambios}`)
+                listaInputs.forEach(element => {
+                    if (listaGeneros.includes(element.getAttribute("value"))) {
+                        element.checked = true
+                    }
+                });
+                // prender estrellas 
+                let estrellas = document.querySelectorAll(`.stars${idCambios}`)
+
+                estrellas.forEach(star => {
+                    if (Number(star.getAttribute("value")) <= Number(resourcesData.valor)) {
+                        star.classList.add("starActive")
+                    }
+                });
+                
+                document.querySelectorAll(`.genEditInput${idCambios}`).forEach((checkbox) => {
+                    checkbox.addEventListener('change', ()=>{
+                        modificarBoton(idCambios)
+                    });
+                });
                 moverEstrellas(idCambios)
                 dropdownsEdicion()
+
                 botonEditar.textContent = "Guardar"
             } else {
 
@@ -271,7 +397,7 @@ const cargarPagina = async function () {
                     plataforma: areasDeTextos[3].innerText,
                     estado: areasDeTextos[4].innerText,
                     fecha: areasDeTextos[5].value,
-                    valor: areasDeTextos[6].value,
+                    valor: areasDeTextos[6].getAttribute("value"),
                     texto: areasDeTextos[7].value,
                 };
                 const cardData = cardContainer.querySelector(".card-body")
@@ -282,10 +408,27 @@ const cargarPagina = async function () {
                     <p class="card-text">${dataNueva.plataforma}</p>
                     <p class="card-text">${dataNueva.estado}</p>
                     <p class="card-text">${dataNueva.fecha}</p>
-                    <p class="card-text">${dataNueva.valor}</p>
+                    <div id="star${idCambios}" value="${dataNueva.valor}" class="estrellasCards estrellasQuietas">
+                        <div cont="star${idCambios}" class="stars${idCambios}" value="1">★</div>
+                        <div cont="star${idCambios}" class="stars${idCambios}" value="2">★</div>
+                        <div cont="star${idCambios}" class="stars${idCambios}" value="3">★</div>
+                        <div cont="star${idCambios}" class="stars${idCambios}" value="4">★</div>
+                        <div cont="star${idCambios}" class="stars${idCambios}" value="5">★</div>
+                    </div>
                     <p class="card-text">${dataNueva.texto}</p>
                 `
                 cardData.innerHTML = dataSourceHtml
+
+                // #region prender estrellitas
+                    let estrellas = document.querySelectorAll(`.stars${idCambios}`)
+
+                    estrellas.forEach(star => {
+                        if (Number(star.getAttribute("value")) <= Number(dataNueva.valor)) {
+                            star.classList.add("starActive")
+                        }
+                    });
+                // #endregion
+                
                 botonEditar.textContent = "Editar";
                 // subir a la api
 
@@ -293,7 +436,7 @@ const cargarPagina = async function () {
                 const subir = await fetch(`https://66c9dc4559f4350f064da9c1.mockapi.io/api/v1/resources/${idCambios}`, {
                     method: 'PUT',
                     headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(dataNueva),
+                    body: JSON.stringify(dataNueva)
                 });
 
                 // #endregion 
@@ -332,13 +475,31 @@ const dropdownsEdicion = function () {
     });
 }
 
-const traerDatosEdicion = function () {
+function modificarBoton(idObjetivo) {
+    const checkboxes = document.querySelectorAll(`.genEditInput${idObjetivo}:checked`);
+    const button = document.getElementById(`edicionGenero${idObjetivo}`);
+    let selected = [];
 
+    checkboxes.forEach((checkbox) => {
+        selected.push(checkbox.value);
+        let objetivo = checkbox.getAttribute("cont")
+        document.getElementById(objetivo).setAttribute("valid", true)
+    });
+
+    // si seleccion mostrarla, sino "Géneros"
+    if (selected.length > 0) {
+        button.textContent = selected.join(', ');
+    } else {
+        button.textContent = 'Géneros';
+    }
+
+    
 }
 
+// subir
 const moverEstrellas = function (idObjetivo) {
     let estrellas = document.querySelectorAll(`.stars${idObjetivo}`);
-    
+
     for (const star of estrellas) {
         star.addEventListener("click", () => {
             valorStar = Number(star.getAttribute("value"))
@@ -356,5 +517,15 @@ const moverEstrellas = function (idObjetivo) {
             document.getElementById(`star${idObjetivo}`).setAttribute("value", valorStar)
         })
     }
+}
+
+const arreglarCheckBoxInterior = function () {
+    document.querySelectorAll('.generosMenus').forEach(element => {
+        console.log(element);
+
+        element.addEventListener('click', function (event) {
+            event.stopPropagation();
+        });
+    });
 }
 
