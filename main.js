@@ -226,16 +226,16 @@ const cargarPagina = async function () {
                     <textarea class="edicion-text formularioActivate">${resourcesData.nombre}</textarea>
 
                     <div class="dropdown">
-                        <button id="edicion-formato" class="edicion-text btn btn-secondary dropdown-toggle" type="button"
+                        <button id="edicion-formato${idCambios}" class="edicion-text btn btn-secondary dropdown-toggle" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             ${resourcesData.formato}
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a value="edicion-formato" class="edicion-item dropdown-item"
+                            <li><a value="edicion-formato${idCambios}" class="edicion-item${idCambios} dropdown-item"
                                     href="#">Serie</a></li>
-                            <li><a value="edicion-formato" class="edicion-item dropdown-item"
+                            <li><a value="edicion-formato${idCambios}" class="edicion-item${idCambios} dropdown-item"
                                     href="#">Película</a></li>
-                            <li><a value="edicion-formato" class="edicion-item dropdown-item"
+                            <li><a value="edicion-formato${idCambios}" class="edicion-item${idCambios} dropdown-item"
                                     href="#">Libro</a></li>
                         </ul>
                     </div>
@@ -249,8 +249,8 @@ const cargarPagina = async function () {
                             <li>
                                 <div class="form-check">
                                     <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
-                                        type="checkbox" value="Acción" id="editAccion">
-                                    <label class="form-check-label" for="editAccion">
+                                        type="checkbox" value="Acción" id="editAccion${idCambios}">
+                                    <label class="form-check-label" for="editAccion${idCambios}">
                                         Acción
                                     </label>
                                 </div>
@@ -258,8 +258,8 @@ const cargarPagina = async function () {
                             <li>
                                 <div class="form-check">
                                     <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
-                                        type="checkbox" value="Ciencia Ficción" id="editSciFi">
-                                    <label class="form-check-label" for="editSciFi">
+                                        type="checkbox" value="Ciencia Ficción" id="editSciFi${idCambios}">
+                                    <label class="form-check-label" for="editSciFi${idCambios}">
                                         Ciencia Ficción
                                     </label>
                                 </div>
@@ -267,8 +267,8 @@ const cargarPagina = async function () {
                             <li>
                                 <div class="form-check">
                                     <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
-                                        type="checkbox" value="Romance" id="editRomance">
-                                    <label class="form-check-label" for="editRomance">
+                                        type="checkbox" value="Romance" id="editRomance${idCambios}">
+                                    <label class="form-check-label" for="editRomance${idCambios}">
                                         Romance
                                     </label>
                                 </div>
@@ -276,9 +276,9 @@ const cargarPagina = async function () {
                             <li>
                                 <div class="form-check">
                                     <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
-                                        type="checkbox" value="Misterio" id="editMisterio">
+                                        type="checkbox" value="Misterio" id="editMisterio${idCambios}">
                                     <label class="form-check-label"
-                                        for="editMisterio">
+                                        for="editMisterio${idCambios}">
                                         Misterio
                                     </label>
                                 </div>
@@ -286,9 +286,9 @@ const cargarPagina = async function () {
                             <li>
                                 <div class="form-check">
                                     <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
-                                        type="checkbox" value="Fantasía" id="editFantasia">
+                                        type="checkbox" value="Fantasía" id="editFantasia${idCambios}">
                                     <label class="form-check-label"
-                                        for="editFantasia">
+                                        for="editFantasia${idCambios}">
                                         Fantasía
                                     </label>
                                 </div>
@@ -296,8 +296,8 @@ const cargarPagina = async function () {
                             <li>
                                 <div class="form-check">
                                     <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
-                                        type="checkbox" value="Drama" id="editDrama">
-                                    <label class="form-check-label" for="editDrama">
+                                        type="checkbox" value="Drama" id="editDrama${idCambios}">
+                                    <label class="form-check-label" for="editDrama${idCambios}">
                                         Drama
                                     </label>
                                 </div>
@@ -305,39 +305,39 @@ const cargarPagina = async function () {
                             <li>
                                 <div class="form-check">
                                     <input cont="generoContainer" class="form-check-input genEditInput${idCambios}"
-                                        type="checkbox" value="Comedia" id="editComedia">
+                                        type="checkbox" value="Comedia" id="editComedia${idCambios}">
                                     <label class="form-check-label"
-                                        for="editComedia">
+                                        for="editComedia${idCambios}">
                                         Comedia </label>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div class="dropdown">
-                        <button id="edicion-plataforma" class="edicion-text btn btn-secondary dropdown-toggle" type="button"
+                        <button id="edicion-plataforma${idCambios}" class="edicion-text btn btn-secondary dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                             ${resourcesData.plataforma}
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a value="edicion-plataforma" class="edicion-item dropdown-item" href="#">Netflix</a></li>
-                            <li><a value="edicion-plataforma" class="edicion-item dropdown-item" href="#">Amazon</a></li>
-                            <li><a value="edicion-plataforma" class="edicion-item dropdown-item" href="#">Fisico</a></li>
-                            <li><a value="edicion-plataforma" class="edicion-item dropdown-item" href="#">Kindle</a></li>
-                            <li><a value="edicion-plataforma" class="edicion-item dropdown-item" href="#">HBO</a></li>
+                            <li><a value="edicion-plataforma${idCambios}" class="edicion-item${idCambios} dropdown-item" href="#">Netflix</a></li>
+                            <li><a value="edicion-plataforma${idCambios}" class="edicion-item${idCambios} dropdown-item" href="#">Amazon</a></li>
+                            <li><a value="edicion-plataforma${idCambios}" class="edicion-item${idCambios} dropdown-item" href="#">Fisico</a></li>
+                            <li><a value="edicion-plataforma${idCambios}" class="edicion-item${idCambios} dropdown-item" href="#">Kindle</a></li>
+                            <li><a value="edicion-plataforma${idCambios}" class="edicion-item${idCambios} dropdown-item" href="#">HBO</a></li>
                         </ul>
                     </div>
 
                     <div class="dropdown">
-                        <button id="edicion-estado" class="edicion-text btn btn-secondary dropdown-toggle" type="button"
+                        <button id="edicion-estado${idCambios}" class="edicion-text btn btn-secondary dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                             ${resourcesData.estado}
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a color="success" value="edicion-estado" class="edicion-item dropdown-item" 
+                            <li><a color="success" value="edicion-estado${idCambios}" class="edicion-item${idCambios} dropdown-item" 
                             href="#">Terminado</a></li>
-                            <li><a color="warning" value="edicion-estado" class="edicion-item dropdown-item" 
+                            <li><a color="warning" value="edicion-estado${idCambios}" class="edicion-item${idCambios} dropdown-item" 
                             href="#">Progreso</a></li>
-                            <li><a color="danger" value="edicion-estado" class="edicion-item dropdown-item" 
+                            <li><a color="danger" value="edicion-estado${idCambios}" class="edicion-item${idCambios} dropdown-item" 
                             href="#">Pendiente</a></li>
                         </ul>
                     </div>
@@ -380,8 +380,9 @@ const cargarPagina = async function () {
                         modificarBoton(idCambios)
                     });
                 });
+
                 moverEstrellas(idCambios)
-                dropdownsEdicion()
+                dropdownsEdicion(idCambios)
 
                 botonEditar.textContent = "Guardar"
             } else {
@@ -389,7 +390,8 @@ const cargarPagina = async function () {
                 // MODO GUARDARRRRRRR *********************
                 botonEditar.textContent = 'Editar';
                 const areasDeTextos = cardContainer.querySelectorAll(".edicion-text");
-
+                console.log(areasDeTextos[7]);
+                
                 let dataNueva = {
                     nombre: areasDeTextos[0].value,
                     formato: areasDeTextos[1].innerText,
@@ -398,7 +400,7 @@ const cargarPagina = async function () {
                     estado: areasDeTextos[4].innerText,
                     fecha: areasDeTextos[5].value,
                     valor: areasDeTextos[6].getAttribute("value"),
-                    texto: areasDeTextos[7].value,
+                    texto: areasDeTextos[7].value
                 };
                 const cardData = cardContainer.querySelector(".card-body")
                 let dataSourceHtml = `
@@ -450,8 +452,8 @@ const cargarPagina = async function () {
 }
 cargarPagina()
 
-const dropdownsEdicion = function () {
-    let edicionItems = document.querySelectorAll(".edicion-item")
+const dropdownsEdicion = function (idCambios) {
+    let edicionItems = document.querySelectorAll(`.edicion-item${idCambios}`)
     console.log(edicionItems);
 
     edicionItems.forEach(element => {
