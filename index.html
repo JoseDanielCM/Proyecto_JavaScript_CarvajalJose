@@ -58,67 +58,70 @@
 
                                             <li>
                                                 <div class="form-check">
-                                                    <input cont="generoContainer" class="form-check-input"
-                                                        type="checkbox" value="Acción" id="formAccion">
-                                                    <label value="formGenero" class="form-check-label" for="formAccion">
+                                                    <input btn="formGenero" cont="generoContainer"
+                                                        class=" form-check-input" type="checkbox" value="Acción"
+                                                        id="formAccion">
+                                                    <label class="form-check-label" for="formAccion">
                                                         Acción
                                                     </label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="form-check">
-                                                    <input cont="generoContainer" class="form-check-input"
-                                                        type="checkbox" value="Ciencia Ficción" id="formSF">
-                                                    <label value="formGenero" class="form-check-label" for="formSF">
+                                                    <input btn="formGenero" cont="generoContainer"
+                                                        class=" form-check-input" type="checkbox"
+                                                        value="Ciencia Ficción" id="formSF">
+                                                    <label class="form-check-label" for="formSF">
                                                         Ciencia Ficción
                                                     </label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="form-check">
-                                                    <input cont="generoContainer" class="form-check-input"
-                                                        type="checkbox" value="Romance" id="formRomance">
-                                                    <label value="formGenero" class="form-check-label"
-                                                        for="formRomance">
+                                                    <input btn="formGenero" cont="generoContainer"
+                                                        class=" form-check-input" type="checkbox" value="Romance"
+                                                        id="formRomance">
+                                                    <label class="form-check-label" for="formRomance">
                                                         Romance
                                                     </label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="form-check">
-                                                    <input cont="generoContainer" class="form-check-input"
-                                                        type="checkbox" value="Misterio" id="formMisterio">
-                                                    <label value="formGenero" class="form-check-label"
-                                                        for="formMisterio">
+                                                    <input btn="formGenero" cont="generoContainer"
+                                                        class=" form-check-input" type="checkbox" value="Misterio"
+                                                        id="formMisterio">
+                                                    <label class="form-check-label" for="formMisterio">
                                                         Misterio
                                                     </label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="form-check">
-                                                    <input cont="generoContainer" class="form-check-input"
-                                                        type="checkbox" value="Fantasía" id="formFantasia">
-                                                    <label value="formGenero" class="form-check-label"
-                                                        for="formFantasia">
+                                                    <input btn="formGenero" cont="generoContainer"
+                                                        class=" form-check-input" type="checkbox" value="Fantasía"
+                                                        id="formFantasia">
+                                                    <label class="form-check-label" for="formFantasia">
                                                         Fantasía
                                                     </label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="form-check">
-                                                    <input cont="generoContainer" class="form-check-input"
-                                                        type="checkbox" value="Drama" id="formDrama">
-                                                    <label value="formGenero" class="form-check-label" for="formDrama">
+                                                    <input btn="formGenero" cont="generoContainer"
+                                                        class=" form-check-input" type="checkbox" value="Drama"
+                                                        id="formDrama">
+                                                    <label class="form-check-label" for="formDrama">
                                                         Drama
                                                     </label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="form-check">
-                                                    <input cont="generoContainer" class="form-check-input"
-                                                        type="checkbox" value="Comedia" id="formComedia">
-                                                    <label value="formGenero" class="form-check-label"
-                                                        for="formComedia">
+                                                    <input btn="formGenero" cont="generoContainer"
+                                                        class=" form-check-input" type="checkbox" value="Comedia"
+                                                        id="formComedia">
+                                                    <label class="form-check-label" for="formComedia">
                                                         Comedia </label>
                                                 </div>
                                             </li>
@@ -205,36 +208,136 @@
                                 </form>
                             </div>
 
-                            <!-- ************************ OTROS ITEMS ************************************** -->
                         </li>
+                        <!-- ************************ OTROS ITEMS ************************************** -->
 
-                        <li class="nav-item">
-                            <a class="nav-link active px-3" aria-current="page" href="#">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link px-3" href="#">Link</a>
-                        </li>
                         <!-- DROPDOWN -->
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown"
+                            <a id="btnFiltroGeneros" listGen="" class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                Dropdown
+                                Géneros
+                            </a>
+                            <ul id="filtroGeneros" class="dropdown-menu px-3">
+                                <li>
+                                    <div class="form-check">
+                                        <input class="inputFiltrosGenero form-check-input" type="checkbox"
+                                            value="Acción" id="filtroAccion">
+                                        <label class="form-check-label" for="filtroAccion">
+                                            Acción
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <input class="inputFiltrosGenero form-check-input" type="checkbox"
+                                            value="Ciencia Ficción" id="filtroScFi">
+                                        <label class="form-check-label" for="filtroScFi">
+                                            Ciencia Ficción
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <input class="inputFiltrosGenero form-check-input" type="checkbox"
+                                            value="Romance" id="filtroRomance">
+                                        <label class="form-check-label" for="filtroRomance">
+                                            Romance
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <input class="inputFiltrosGenero form-check-input" type="checkbox"
+                                            value="Misterio" id="filtroMisterio">
+                                        <label class="form-check-label" for="filtroMisterio">
+                                            Misterio
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <input class="inputFiltrosGenero form-check-input" type="checkbox"
+                                            value="Fantasía" id="filtroFantasia">
+                                        <label class="form-check-label" for="filtroFantasia">
+                                            Fantasía
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <input class="inputFiltrosGenero form-check-input" type="checkbox"
+                                            value="Drama" id="filtroDrama">
+                                        <label class="form-check-label" for="filtroDrama">
+                                            Drama
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <input class="inputFiltrosGenero form-check-input" type="checkbox"
+                                            value="Comedia" id="filtroComedia">
+                                        <label class="form-check-label" for="filtroComedia">
+                                            Comedia </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="filterPlataform" class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Plataformas
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a value="filterPlataform" class="dropdown-item" href="#">Netflix</a></li>
+                                <li><a value="filterPlataform" class="dropdown-item" href="#">Amazon</a></li>
+                                <li><a value="filterPlataform" class="dropdown-item" href="#">Fisico</a></li>
+                                <li><a value="filterPlataform" class="dropdown-item" href="#">Kindle</a></li>
+                                <li><a value="filterPlataform" class="dropdown-item" href="#">HBO</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="filterStatus" class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Estados
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a value="filterStatus" class="dropdown-item" href="#">Terminado</a></li>
+                                <li><a value="filterStatus" class="dropdown-item" href="#">Progreso</a></li>
+                                <li><a value="filterStatus" class="dropdown-item" href="#">Pendiente</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="filterFormato" class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Formatos
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a value="filterFormato" class="dropdown-item" href="#">Serie</a></li>
+                                <li><a value="filterFormato" class="dropdown-item" href="#">Película</a></li>
+                                <li><a value="filterFormato" class="dropdown-item" href="#">Libro</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="starFiltro" class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" value="">
+                                Calificacion
+                            </a>    
+                            <ul id="dropdownFiltroEstrellitas" class="dropdown-menu">
+                                <section id="estrellasFiltro">
+                                    <div class="starsFiltro" value="1">★</div>
+                                    <div class="starsFiltro" value="2">★</div>
+                                    <div class="starsFiltro" value="3">★</div>
+                                    <div class="starsFiltro" value="4">★</div>
+                                    <div class="starsFiltro" value="5">★</div>
+                                </section>
                             </ul>
                         </li>
 
                     </ul>
                     <form class="d-flex mt-xl-0 mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <input id="filtroNombre" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button id="subirFiltros" class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
             </div>
@@ -257,7 +360,7 @@
     <div id="contenedorRecursos">
         <div id="card-container" class="row row-cols-1 row-cols-md-2     row-cols-lg-3 row-cols-xl-4 g-4">
 
-            
+
 
         </div>
     </div>

@@ -21,6 +21,29 @@ for (const star of estrellas) {
 }
 
 
+const moverEstrellas = function (idObjetivo) {
+    let estrellas = document.querySelectorAll(`.stars${idObjetivo}`);
+    console.log(estrellas);
+
+    for (const star of estrellas) {
+        star.addEventListener("click", () => {
+            valorStar = Number(star.getAttribute("value"))
+            for (const starR of estrellas) {
+                starR.classList.remove("starActive");
+            }
+
+            for (const starON of estrellas) {
+                if (starON.getAttribute("value") <= valorStar) {
+                    starON.classList.add("starActive")
+                }
+            }
+
+            document.getElementById(`star${idObjetivo}`).setAttribute("value", valorStar)
+        })
+    }
+}
+let estrellitas = "Filtro"
+moverEstrellas(estrellitas)
 // *********************** VALIDACION ITEMS DENTRO DEL DROPDOWN *******************************
 
 let items = document.querySelectorAll(".dropdown-item")
@@ -29,8 +52,11 @@ items.forEach(element => {
     element.addEventListener("click", () => {
         let valueEscogido = element.innerHTML
         let objetivo = element.getAttribute("value")
+
         let containerObjetivo = element.getAttribute("cont")
-        document.getElementById(containerObjetivo).setAttribute("valid", true)
+        if (containerObjetivo) {
+            document.getElementById(containerObjetivo).setAttribute("valid", true)
+        }
 
         let elementoObjetivo = document.getElementById(objetivo)
         elementoObjetivo.innerHTML = valueEscogido
@@ -53,10 +79,16 @@ document.getElementById('menuGeneros').addEventListener('click', function (event
     event.stopPropagation();
 });
 
+document.getElementById('filtroGeneros').addEventListener('click', function (event) {
+    event.stopPropagation();
+});
+document.getElementById('dropdownFiltroEstrellitas').addEventListener('click', function (event) {
+    event.stopPropagation();
+});
 // ******************************************* VALIDAR LAS CHECKLISTS ***************************
 
 function updateButtonText() {
-    const checkboxes = document.querySelectorAll('.form-check-input:checked');
+    const checkboxes = document.querySelectorAll('input[btn="formGenero"].form-check-input:checked');
     const button = document.getElementById('formGenero');
     let selected = [];
 
@@ -151,12 +183,11 @@ btnSubir.addEventListener("click", async (event) => {
 })
 
 const cargarPagina = async function () {
-    let identificadorResources = 0
     const traer = await fetch('https://66c9dc4559f4350f064da9c1.mockapi.io/api/v1/resources/');
     const dataResources = await traer.json()
 
     dataResources.forEach((data) => {
-        identificadorResources++
+        let identificadorResources = data.id
         let nombre = data.nombre
         let genero = data.genero
         let plataforma = data.plataforma
@@ -170,6 +201,7 @@ const cargarPagina = async function () {
             <div class="card text-bg-secondary" style="max-width: 18rem;">
                 <div class="card-header">
                     <button class="btn btn-primary btnEditar">Editar</button>
+                    <button class="btn btn-primary btnBorrar">Borrar</button>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">${nombre}</h5>
@@ -211,6 +243,8 @@ const cargarPagina = async function () {
 
         botonEditar.addEventListener("click", async () => {
             let idCambios = cardContainer.getAttribute("id")
+            console.log(idCambios);
+
             const DBresource = await fetch(`https://66c9dc4559f4350f064da9c1.mockapi.io/api/v1/resources/${idCambios}`)
             const resourcesData = await DBresource.json()
 
@@ -357,7 +391,7 @@ const cargarPagina = async function () {
 
                     <textarea class="edicion-text formularioActivate">${resourcesData.texto}</textarea>
                 `
-                
+
                 arreglarCheckBoxInterior()
                 // colocar chek a los que ya traia antes
                 let listaInputs = document.querySelectorAll(`.genEditInput${idCambios}`)
@@ -374,9 +408,9 @@ const cargarPagina = async function () {
                         star.classList.add("starActive")
                     }
                 });
-                
+
                 document.querySelectorAll(`.genEditInput${idCambios}`).forEach((checkbox) => {
-                    checkbox.addEventListener('change', ()=>{
+                    checkbox.addEventListener('change', () => {
                         modificarBoton(idCambios)
                     });
                 });
@@ -391,7 +425,7 @@ const cargarPagina = async function () {
                 botonEditar.textContent = 'Editar';
                 const areasDeTextos = cardContainer.querySelectorAll(".edicion-text");
                 console.log(areasDeTextos[7]);
-                
+
                 let dataNueva = {
                     nombre: areasDeTextos[0].value,
                     formato: areasDeTextos[1].innerText,
@@ -422,15 +456,15 @@ const cargarPagina = async function () {
                 cardData.innerHTML = dataSourceHtml
 
                 // #region prender estrellitas
-                    let estrellas = document.querySelectorAll(`.stars${idCambios}`)
+                let estrellas = document.querySelectorAll(`.stars${idCambios}`)
 
-                    estrellas.forEach(star => {
-                        if (Number(star.getAttribute("value")) <= Number(dataNueva.valor)) {
-                            star.classList.add("starActive")
-                        }
-                    });
+                estrellas.forEach(star => {
+                    if (Number(star.getAttribute("value")) <= Number(dataNueva.valor)) {
+                        star.classList.add("starActive")
+                    }
+                });
                 // #endregion
-                
+
                 botonEditar.textContent = "Editar";
                 // subir a la api
 
@@ -447,11 +481,23 @@ const cargarPagina = async function () {
         })
 
         // #endregion *****************************************************************
+
+        // #region ****************** BOTON BORRAR
+        let botonBorrar = cardContainer.querySelector("button.btnBorrar")
+
+        botonBorrar.addEventListener("click", async () => {
+            let idCambios = cardContainer.getAttribute("id")
+            cardContainer.remove()
+            await fetch(`https://66c9dc4559f4350f064da9c1.mockapi.io/api/v1/resources/${idCambios}`, {
+                method: 'DELETE'
+            })
+        })
+
+        // #endregion
     });
 
 }
 cargarPagina()
-
 const dropdownsEdicion = function (idCambios) {
     let edicionItems = document.querySelectorAll(`.edicion-item${idCambios}`)
     console.log(edicionItems);
@@ -481,7 +527,6 @@ function modificarBoton(idObjetivo) {
     const checkboxes = document.querySelectorAll(`.genEditInput${idObjetivo}:checked`);
     const button = document.getElementById(`edicionGenero${idObjetivo}`);
     let selected = [];
-
     checkboxes.forEach((checkbox) => {
         selected.push(checkbox.value);
         let objetivo = checkbox.getAttribute("cont")
@@ -494,32 +539,27 @@ function modificarBoton(idObjetivo) {
     } else {
         button.textContent = 'Géneros';
     }
-
-    
 }
 
-// subir
-const moverEstrellas = function (idObjetivo) {
-    let estrellas = document.querySelectorAll(`.stars${idObjetivo}`);
+function filtroGeneros() {
+    const checkboxes = document.querySelectorAll(`.inputFiltrosGenero:checked`);
+    const button = document.getElementById(`btnFiltroGeneros`);
+    let selected = [];
+    checkboxes.forEach((checkbox) => {
+        selected.push(checkbox.value);
+    });
 
-    for (const star of estrellas) {
-        star.addEventListener("click", () => {
-            valorStar = Number(star.getAttribute("value"))
-            document.getElementById("formPuntuacion").setAttribute("value", valorStar)
-            for (const starR of estrellas) {
-                starR.classList.remove("starActive");
-            }
-
-            for (const starON of estrellas) {
-                if (starON.getAttribute("value") <= valorStar) {
-                    starON.classList.add("starActive")
-                }
-            }
-
-            document.getElementById(`star${idObjetivo}`).setAttribute("value", valorStar)
-        })
-    }
+    // si seleccion mostrarla, sino "Géneros"
+    button.setAttribute("listGen", selected.join(', '))
 }
+
+document.querySelectorAll(`.inputFiltrosGenero`).forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+        filtroGeneros()
+    });
+});
+
+filtroGeneros()
 
 const arreglarCheckBoxInterior = function () {
     document.querySelectorAll('.generosMenus').forEach(element => {
@@ -530,4 +570,36 @@ const arreglarCheckBoxInterior = function () {
         });
     });
 }
+
+document.getElementById("subirFiltros").addEventListener("click", () => {
+    // #region TRAER DATOS DE LOS FILTROS
+        const filtros = {
+            genero: document.getElementById("btnFiltroGeneros").getAttribute("listgen"),
+            plataforma: document.getElementById("filterPlataform").innerText,
+            estado: document.getElementById("filterStatus").innerText,
+            formato: document.getElementById("filterFormato").innerText,
+            valor: document.getElementById("starFiltro").getAttribute("value"),
+            nombre: document.getElementById("filtroNombre").value
+        }
+        // #region VALIDAR COSITAS
+            if (filtros.plataforma =="Plataformas ") {
+                filtros.plataforma = ""
+            }
+            if (filtros.estado =="Estados ") {
+                filtros.estado = ""
+            }
+            if (filtros.formato =="Formatos ") {
+                filtros.formato = ""
+            }
+            if (filtros.valor =="Calificacion ") {
+                filtros.valor = ""
+            }
+        // #endregion
+        
+
+        console.log(filtros);
+        
+
+    // #endregion
+})
 

@@ -1,15 +1,5 @@
 @media (min-width: 1200px) {
-    #contenedorItems {
-        position: relative;
-    }
-
-    #formAgregar {
-        position: absolute;
-        left: 1.5vw;
-    }
-
     #menu-dropdown-datos{
-        overflow-y: scroll; 
         width: 30vw;
     }
 }
@@ -31,6 +21,18 @@
 }
 
 .estrellasCards > div {
+    background-color: transparent;
+    border: none;
+    font-size: 2.5vw;
+    cursor: pointer;
+}
+
+#estrellasFiltro{
+    display: flex;
+    justify-content: space-around;
+}
+
+#estrellasFiltro > div {
     background-color: transparent;
     border: none;
     font-size: 2.5vw;
@@ -83,4 +85,14 @@
 
 .form-check,.form-check-label,.form-check-input{
     cursor: pointer;
+}
+
+.card-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+#listGenerosFiltro{
+    white-space: normal;
+    max-width: 100px;
 }
