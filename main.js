@@ -183,6 +183,7 @@ btnSubir.addEventListener("click", async (event) => {
 })
 
 const cargarPagina = async function (filtros) {
+    
     console.log(filtros)
     
     const traer = await fetch('https://66c9dc4559f4350f064da9c1.mockapi.io/api/v1/resources/');
@@ -638,3 +639,11 @@ document.getElementById("subirFiltros").addEventListener("click", () => {
     // #endregion
 })
 
+document.getElementById("eliminarFiltros").addEventListener("click",()=>{
+    document.getElementById("btnFiltroGeneros").getAttribute
+    document.getElementById("filterPlataform").innerText = "Plataformas "
+    document.getElementById("filterStatus").innerText = "Estados "
+    document.getElementById("filterFormato").innerText = "Formatos "
+    document.getElementById("starFiltro").getAttribute
+    document.getElementById("filtroNombre").value = "Calificacion "
+})
