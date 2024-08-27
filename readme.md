@@ -41,12 +41,12 @@ La aplicación permite gestionar una biblioteca personal donde los usuarios pued
 
 - La aplicación cuenta con varios filtro (género, plataforma, estado, formato, valoracion) accesibles mediante menús desplegables en la barra superior. 'Los filtros aplicados son apilables, lo que significa que se pueden aplicar varios filtros a la vez para hacer una búsqueda más específica.
 
-<img src='image.png.png' alt='Vista previa de la aplicación' width='500'>
+<img src='image.png' alt='Vista previa de la aplicación' width='500'>
 
 - La barra de búsqueda permite encontrar un recurso específico por su nombre (tambien se puede combinar con los demás filtros).
 - Los resultados de la búsqueda se actualizan al hacer clic en 'Search', mostrando solo los recursos que cumplen con los filtros seleccionados.
 - Si deseas modificar o eliminar los filtros, puedes hacerlo individualmente o utilizar el botón 'Eliminar filtros' para eliminar todos los filtros aplicados y restaurar la búsqueda a su estado inicial.
-<img src='delFil.png.png' alt='Vista previa de la aplicación' width='700px'>
+<img src='delFil.png' alt='Vista previa de la aplicación' width='700'>
 
 
 ### Porcentaje Completado
