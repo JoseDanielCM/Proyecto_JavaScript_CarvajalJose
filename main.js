@@ -301,7 +301,7 @@ const cargarPagina = async function (filtros) {
                     <textarea class="edicion-text formularioActivate">${resourcesData.nombre}</textarea>
 
                     <div class="dropdown">
-                        <button id="edicion-formato${idCambios}" class="edicion-text btn btn-secondary dropdown-toggle" type="button"
+                        <button id="edicion-formato${idCambios}" class="edicion-text btn btn-outline-light dropdown-toggle my-2" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             ${resourcesData.formato}
                         </button>
@@ -316,7 +316,7 @@ const cargarPagina = async function (filtros) {
                     </div>
 
                     <div valid="false" id="generoContainer" class="dropdown">
-                        <button id="edicionGenero${idCambios}" class="btn btn-secondary dropdown-toggle edicion-text edicionGeneros" type="button"
+                        <button id="edicionGenero${idCambios}" class="btn btn-outline-light dropdown-toggle edicion-text edicionGeneros my-2" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             ${resourcesData.genero}</button>
                         <ul class="generosMenus dropdown-menu px-3">
@@ -389,7 +389,7 @@ const cargarPagina = async function (filtros) {
                         </ul>
                     </div>
                     <div class="dropdown">
-                        <button id="edicion-plataforma${idCambios}" class="edicion-text btn btn-secondary dropdown-toggle" type="button"
+                        <button id="edicion-plataforma${idCambios}" class="edicion-text btn btn-outline-light dropdown-toggle my-2" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                             ${resourcesData.plataforma}
                         </button>
@@ -403,7 +403,7 @@ const cargarPagina = async function (filtros) {
                     </div>
 
                     <div class="dropdown">
-                        <button id="edicion-estado${idCambios}" class="edicion-text btn btn-secondary dropdown-toggle" type="button"
+                        <button id="edicion-estado${idCambios}" class="edicion-text btn btn-outline-light dropdown-toggle my-2" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                             ${resourcesData.estado}
                         </button>
