@@ -183,7 +183,7 @@ btnSubir.addEventListener("click", async (event) => {
 })
 
 const cargarPagina = async function (filtros) {
-    
+    let cantCompletados = 0
     console.log(filtros)
     
     const traer = await fetch('https://66c9dc4559f4350f064da9c1.mockapi.io/api/v1/resources/');
@@ -233,7 +233,10 @@ const cargarPagina = async function (filtros) {
                     return
                 }
             }
-                
+        estado = estado.trim()
+        if (estado == "Terminado") {
+            cantCompletados++
+        }
         // #endregion
         let dataSourceHtml = `
             <div class="card text-bg-secondary" style="max-width: 18rem;">
@@ -259,7 +262,7 @@ const cargarPagina = async function (filtros) {
                 </div>
             </div>
 
-    `
+        `
         let cardContainer = document.createElement("section")
         cardContainer.classList.add("col")
         cardContainer.setAttribute("id", identificadorResources)
@@ -533,6 +536,22 @@ const cargarPagina = async function (filtros) {
 
         // #endregion
     });
+    let divPorcentaje = document.getElementById("divPorcentaje")
+        let cantidadRegistros = document.getElementById("card-container").childElementCount
+
+        if (cantidadRegistros == 0) {
+            divPorcentaje.style.width = "0%"
+            document.getElementById("completed%").innerText = "0%"
+
+            
+        }else{
+            let porcentajeCompletados = `${(cantCompletados/cantidadRegistros*100)}%`
+            divPorcentaje.style.width = porcentajeCompletados
+            divPorcentaje.innerText = porcentajeCompletados
+            document.getElementById("completed%").innerText = porcentajeCompletados
+        }
+        
+        
 
 }
 let sinfiltros = "ninguno"
@@ -628,9 +647,6 @@ document.getElementById("subirFiltros").addEventListener("click", () => {
             if (filtros.formato =="Formatos ") {
                 filtros.formato = ""
             }
-            if (filtros.valor =="Calificacion ") {
-                filtros.valor = ""
-            }
         // #endregion
         
         console.log(filtros);
@@ -640,10 +656,24 @@ document.getElementById("subirFiltros").addEventListener("click", () => {
 })
 
 document.getElementById("eliminarFiltros").addEventListener("click",()=>{
-    document.getElementById("btnFiltroGeneros").getAttribute
+    document.getElementById("btnFiltroGeneros").setAttribute("listgen","")
     document.getElementById("filterPlataform").innerText = "Plataformas "
     document.getElementById("filterStatus").innerText = "Estados "
     document.getElementById("filterFormato").innerText = "Formatos "
-    document.getElementById("starFiltro").getAttribute
-    document.getElementById("filtroNombre").value = "Calificacion "
+    document.getElementById("starFiltro").setAttribute("value","")
+    document.getElementById("filtroNombre").value = ""
+
+    let listaFiltroChecklist = document.querySelectorAll(`.inputFiltrosGenero`)
+    listaFiltroChecklist.forEach(element => {
+            element.checked = false
+    });
+
+    let estrellas = document.querySelectorAll(".starsFiltro");
+
+    for (const star of estrellas) {
+        star.classList.remove("starActive");
+    }
+    let sinFiltro = "ninguno"
+    document.getElementById("card-container").innerHTML = ""
+    cargarPagina(sinFiltro)
 })

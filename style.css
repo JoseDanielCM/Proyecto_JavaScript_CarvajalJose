@@ -98,3 +98,11 @@
     max-width: 100px;
 }
 
+#contenedorFuncionesAdicionales {
+    display: flex;
+}
+
+#contPorcentaje{
+    display: flex;
+    flex-direction: column;
+}
