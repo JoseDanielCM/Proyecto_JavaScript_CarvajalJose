@@ -97,7 +97,6 @@ function updateButtonText() {
         document.getElementById(objetivo).setAttribute("valid", true)
     });
 
-    // si seleccion mostrarla, sino "Géneros"
     if (selected.length > 0) {
         button.textContent = selected.join(', ');
     } else {
@@ -239,7 +238,7 @@ const cargarPagina = async function (filtros) {
         }
         // #endregion
         let dataSourceHtml = `
-            <div class="card text-bg-secondary" style="max-width: 18rem;">
+            <div class="card text-bg-secondary" style="width: 18rem;">
                 <div class="card-header">
                     <button class="btn btn-primary btnEditar">Editar</button>
                     <button class="btn btn-primary btnBorrar">Borrar</button>

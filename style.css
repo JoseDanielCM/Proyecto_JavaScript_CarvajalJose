@@ -43,7 +43,7 @@
 .estrellasQuietas > div{
     background-color: transparent;
     border: none;
-    font-size: 2.5vw;
+    font-size: clamp(30px, 2.5vw, 100px);
     cursor: default;
 }
 
@@ -105,4 +105,31 @@
 #contPorcentaje{
     display: flex;
     flex-direction: column;
+}
+
+#contPorcentaje > p{
+    font-size: clamp(15px, 0.8vw, 100px)  ;
+}
+
+#divPorcentaje{
+    font-size: clamp(15px, 1vw, 100px);
+}
+#eliminarFiltros{
+    font-size: clamp(15px, 1vw, 100px);
+}
+
+#contentProgreso{
+    height: clamp(15px, 1vw, 100px);
+}
+
+.btnEditar{
+    font-size: 100%;
+}
+.btnBorrar{
+    font-size: 100%;
+}
+
+.col{
+    display: flex;
+    justify-content: center;
 }
