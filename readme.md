@@ -73,7 +73,7 @@ La aplicación permite gestionar una biblioteca personal donde los usuarios pued
 
 ## Requerimientos Técnicos
 
-**Etapa de diseño**
+- **Etapa de diseño**
 <img src='MOVIL.png' alt='Vista previa de la aplicación' width='500'>
 <img src='pc.png' alt='Vista previa de la aplicación' width='500'>
 
