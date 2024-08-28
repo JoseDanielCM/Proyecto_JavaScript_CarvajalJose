@@ -38,6 +38,9 @@ const moverEstrellas = function (idObjetivo) {
             }
 
             document.getElementById(`star${idObjetivo}`).setAttribute("value", valorStar)
+            if (idObjetivo=="Filtro") {
+                document.getElementById(`star${idObjetivo}`).style.backgroundColor="#9b7eb1"
+            }
         })
     }
 }
@@ -68,8 +71,10 @@ items.forEach(element => {
         if (color !== null) {
             elementoObjetivo.classList.remove("btn-secondary")
             elementoObjetivo.classList.add(`btn-${color}`)
-        }
+        }else{
+            elementoObjetivo.style.backgroundColor = "#9b7eb1"
 
+        }
     })
 });
 
@@ -544,7 +549,9 @@ const cargarPagina = async function (filtros) {
 
             
         }else{
-            let porcentajeCompletados = `${(cantCompletados/cantidadRegistros*100)}%`
+            let porcentajeCompletados = (cantCompletados/cantidadRegistros*100)
+            porcentajeCompletados = Math.floor(porcentajeCompletados)
+            porcentajeCompletados += "%"
             divPorcentaje.style.width = porcentajeCompletados
             divPorcentaje.innerText = porcentajeCompletados
             document.getElementById("completed%").innerText = porcentajeCompletados
@@ -605,8 +612,11 @@ function filtroGeneros() {
     checkboxes.forEach((checkbox) => {
         selected.push(checkbox.value);
     });
-
-    // si seleccion mostrarla, sino "Géneros"
+    if (selected.length > 0) {
+        button.style.backgroundColor = "#9b7eb1"
+    }else{
+        button.style.backgroundColor = "transparent"
+    }
     button.setAttribute("listGen", selected.join(', '))
 }
 
@@ -656,11 +666,22 @@ document.getElementById("subirFiltros").addEventListener("click", () => {
 
 document.getElementById("eliminarFiltros").addEventListener("click",()=>{
     document.getElementById("btnFiltroGeneros").setAttribute("listgen","")
+    document.getElementById("btnFiltroGeneros").style.backgroundColor = "transparent"
+
     document.getElementById("filterPlataform").innerText = "Plataformas "
+    document.getElementById("filterPlataform").style.backgroundColor = "transparent"
+
     document.getElementById("filterStatus").innerText = "Estados "
+    document.getElementById("filterStatus").style.backgroundColor = "transparent"
+
     document.getElementById("filterFormato").innerText = "Formatos "
+    document.getElementById("filterFormato").style.backgroundColor = "transparent"
+
     document.getElementById("starFiltro").setAttribute("value","")
+    document.getElementById("starFiltro").style.backgroundColor= "transparent"
+
     document.getElementById("filtroNombre").value = ""
+    document.getElementById("filtroNombre").style.backgroundColor = "transparent"
 
     let listaFiltroChecklist = document.querySelectorAll(`.inputFiltrosGenero`)
     listaFiltroChecklist.forEach(element => {

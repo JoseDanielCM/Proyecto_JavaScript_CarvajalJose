@@ -145,13 +145,13 @@ body{
 }
 
 .btn-primary{
-    background-color: #005f73;
+    background-color: #4a4c8c;
     border: none;
 
 }
 
 .btn-primary:hover{
-    background-color: #01414d;
+    background-color: #35376c;
 }
 
 .card{
