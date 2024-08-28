@@ -71,6 +71,17 @@ La aplicación permite gestionar una biblioteca personal donde los usuarios pued
 - El proyecto maneja de manera adecuada el modelo DOM para un funcionamiento fluido en el navegador.
 - La interfaz es responsive y ha sido diseñada para ofrecer una experiencia amigable tanto en dispositivos móviles como de escritorio.
 
+## Requerimientos Técnicos
+
+**Etapa de diseño**
+<img src='MOVIL.png' alt='Vista previa de la aplicación' width='500'>
+<img src='pc.png' alt='Vista previa de la aplicación' width='500'>
+
+*O con los links de Canva*
+https://www.canva.com/design/DAGPJOOz_ks/sj-UoopG3aherMUKrMzb5w/edit?utm_content=DAGPJOOz_ks&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+https://www.canva.com/design/DAGH9XVEvw0/zeriuAkiQVN8Aq2m1HVu4w/edit?utm_content=DAGH9XVEvw0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
 ## Instalación
 
 1. Clonar el repositorio:
